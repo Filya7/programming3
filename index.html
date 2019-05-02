@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <meta charset="utf8">
+    <script src="p5.js"></script>
+    <script src="class.js"></script>
+    <script src="script.js"></script>
+    <style>
+        div{
+            display:inline-block;
+        }
+    
+    </style>
+</head>
+
+<head>
+    <style>
+        #legend {position: absolute; top: 200; right: 200;width: 600px;} .legend-color {width: 30px;height: 30px;} td {border: 1px solid black; font-size: 14px; padding-left: 5px;}
+    </style>
+</head>
+
+<body>
+    <table id="legend">
+        <tr>
+            <td class="legend-color">Գույն</td>
+            <td>Անվանում</td>
+            <td>Շարժվում է</td>
+            <td>Ուտում է</td>
+            <td>Բազմանում է</td>
+            <td>Սատկում է</td>
+        </tr>
+
+        <tr>
+            <td class="legend-color" style="background-color:gray"></td>
+            <td>Դատարկ վանդակներ</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="legend-color" style="background-color:green"></td>
+            <td>Խոտ</td>
+            <td></td>
+            <td></td>
+            <td>Մոտակա 8 վանդակներում, 8 տակտը մեկ</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="legend-color" style="background-color:orange"></td>
+            <td>Խոտակեր</td>
+            <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
+            <td>Խոտերին, մոտակա 8 վանդակներում, ուտելիս էներգիան և բազմացման գործակիցը ավելանում են 1֊ով, </td>
+            <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 10 է</td>
+            <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+        </tr>
+        <tr>
+            <td class="legend-color" style="background-color:red"></td>
+            <td>Գիշատիչ</td>
+            <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 2֊ով</td>
+            <td>Խոտակերներին, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 2֊ով, իսկ բազմացման գործակիցը ավելանում է 1֊ով</td>
+            <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 20 է</td>
+            <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+        </tr>
+        <tr>
+            <td class="legend-color" style="background-color:yellow"></td>
+            <td>Խոտակերի ծնող</td>
+            <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
+            <td>Խոտ կամ գիշատիչ, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 1֊ով և իր հետևից թողում է խոտակեր</td>
+            <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 20 է</td>
+            <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+        </tr>
+        <tr>
+            <td class="legend-color" style="background-color:blueviolet"></td>
+            <td>Խոտերի պաշտպան</td>
+            <td>Մոտակա 8 վանդակներում, եթե դատարկ են կամ լցված են խոտով, էներգիան քչանում է 1֊ով</td>
+            <td>խոտակերներին և գիշատիչներին, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 1֊ով</td>
+            <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 10 է</td>
+            <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+        </tr>
+    </table>
+</body>
+<body>
+    <div style="background-color:green; width:15px; height:15px"></div>Խոտ
+    <div style="background-color:orange; width:15px; height:15px"></div>Խոտակեր
+    <div style="background-color:#acacac; width:15px; height:15px"></div>Դատարկ տարածք
+    <div style="background-color:red; width:15px; height:15px"></div>Գիշատիչ<br><br>
+    <div style="background-color:yellow; width:15px; height:15px"></div>Դատարկ տարածք
+    <div style="background-color:blueviolet; width:15px; height:15px"></div>Գիշատիչ<br><br>
+</body>
+
+</html>
