@@ -1,11 +1,10 @@
 // kerpar 1
-class Eatgrassmama {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+    class Eatgrassmama extends LiveForm {
+    constructor(x,y,index) {
+        super(x,y,index)
         this.energy = 10;
         this.multiply = 0;
-        this.directions = [];
+        this.directions = []
 
     }
     newDirections() {
