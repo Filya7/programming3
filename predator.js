@@ -1,56 +1,21 @@
 // gishatich
-class Predator {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+let LiveForm = require("./liveForm")
+module.exports = class Predator extends LiveForm {
+    constructor(x, y, index) {
+        super(x, y, index)
         this.energy = 10;
         this.multiply = 0;
-        this.directions = [];
-
     }
-
-    newDirections() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-
-
-    getDirections(t) {
-        this.newDirections();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == t) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
-    }
-
-
     //move() շարժվել
     move() {
         var fundCords = this.getDirections(0);
-        var cord = random(fundCords);
-        this.energy-=2
+        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
+        this.energy --
         if (cord) {
             var x = cord[0];
             var y = cord[1];
-
             matrix[y][x] = 3;
             matrix[this.y][this.x] = 0;
-
             this.x = x;
             this.y = y;
         }
@@ -59,26 +24,22 @@ class Predator {
     //eat()-ուտել
     eat() {
         var fundCords = this.getDirections(2);
-        var cord = random(fundCords);
+        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
 
         if (cord) {
             var x = cord[0];
             var y = cord[1];
-
-
             matrix[y][x] = 3;
             matrix[this.y][this.x] = 0;
-
             this.x = x;
             this.y = y;
 
             this.multiply++;
+            this.energy += 2;
 
-            this.energy+=2;
-
-            for (var i in predatorArr) {
-                if (x == predatorArr[i].x && y == predatorArr[i].y) {
-                    predatorArr.splice(i, 1);
+            for (var i in eatArr) {
+                if (x == eatArr[i].x && y == eatArr[i].y) {
+                    eatArr.splice(i, 1);
                 }
             }
 
@@ -100,15 +61,13 @@ class Predator {
 
     mul() {
         var fundCords = this.getDirections(0);
-        var cord = random(fundCords);
+        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
 
         if (cord) {
             var x = cord[0];
             var y = cord[1];
-
             var norPredator = new Predator(x, y);
             predatorArr.push(norPredator);
-
             matrix[y][x] = 2;
         }
     }
